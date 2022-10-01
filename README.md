@@ -101,7 +101,7 @@ At some point I would like the LED's to work with whichever effects i'd like, an
 
 ### Built With
 
-* [![Java][Java]][Java-url]
+* [![Java.Java]][Java-url]]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -164,13 +164,26 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [ ] Calling Profiles
     
 - [ ] Gui
+    - [x] Display a Color
+        - [] Set a Color
+        - [ ] Change a Color
+    - [ ] Display a Color changing
+        - [ ] Static
+        - [ ] Dynamic
     - [ ] Create a color wheel
+        - [ ] Make the color wheel do stuff to Colors
     - [ ] Create inputs for LEDS (Addresses and Colors)
+    - [ ] Make a matrix of buttons.
+        - [ ] Map the buttons to an LED address.
+        - [ ] Make them do stuff to LEDs.
+        - [ ] Make them behave like LEDs.
+    - [ ] Save Profiles
+        - [ ] Lists n stuff
     - [ ] Make pretty
     
--[ ] Mobile Support
--[ ] Images
--[ ] MultiLanguage Support
+- [ ] Mobile Support
+- [ ] Images
+- [ ] MultiLanguage Support
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 

@@ -39,15 +39,13 @@ public class HelloApplication extends Application {
 
 
         Color color = new Color();
-        color.setColor("#11ee11");
+        color.setColor("#b5e0f0");
         String buttonColor = color.getHex();
         Button button = new Button("Click me!");
 
         Label label = new Label("Not clicked");
 
-        button.setOnAction(value ->  {
-            label.setText("Clicked!");
-        });
+
         Font font = Font.font("Courier New", FontWeight.BOLD, 36);
 
         button.setFont(font);
@@ -59,9 +57,19 @@ public class HelloApplication extends Application {
         TextField name = new TextField ();
         name.setPromptText("Enter your first name.");
         name.setPrefColumnCount(10);
-        name.getText();
+
         hbox.getChildren().addAll(label1, name);
         hbox.setSpacing(10);
+
+        button.setOnAction(value ->  {
+            label.setText("Clicked!");
+            color.setColor(name.getText());
+            color.printColors();
+            button.setStyle("-fx-background-color: "+ buttonColor +"; ");
+            button.applyCss();
+
+        });
+
 
         Scene scene = new Scene(hbox, 200, 100);
         stage.setTitle("Hello!");

@@ -153,7 +153,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] LEDS
     - [ ] Colors
         - [x] How colors are defined
-        - [ ] How colors Change
+        - [x] How colors Change
         - [ ] Gradients
             - [] Different Types of Gradients
     - [ ] How LEDs Interact with colors
@@ -165,8 +165,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     
 - [ ] Gui
     - [x] Display a Color
-        - [] Set a Color
-        - [ ] Change a Color
+        - [x] Set a Color
+        - [x] Change a Color
     - [ ] Display a Color changing
         - [ ] Static
         - [ ] Dynamic

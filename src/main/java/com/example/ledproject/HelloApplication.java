@@ -9,6 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color ;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -35,43 +38,89 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        LEDColor color = new LEDColor();
+        Button addButton = new Button("Add to Color...");
+        Button subtractButton = new Button("Subtract from Color...");
+        Button multiplyButton = new Button("multiply Color by a factor of...");
+        Button setButton = new Button("Set Color to...");
+
+        String h = color.getHex();
+        String r = Short.toString(color.getRed());
+        String g = Short.toString(color.getGreen());
+        String b = Short.toString(color.getBlue());
+
+        Label hexVal = new Label(h);
+        Label redVal = new Label(r);
+        Label greenVal = new Label(g);
+        Label blueVal = new Label(b);
+
+        color.setColor("#abcdef");
+        Color c = Color.web(color.getHex());
 
 
 
-        Color color = new Color();
-        color.setColor("#b5e0f0");
-        String buttonColor = color.getHex();
-        Button button = new Button("Click me!");
-
-        Label label = new Label("Not clicked");
-
-
-        Font font = Font.font("Courier New", FontWeight.BOLD, 36);
-
-        button.setFont(font);
-        button.setStyle("-fx-background-color: "+ buttonColor +"; ");
+        Rectangle rectangle = new Rectangle(400, 40);
+        rectangle.setFill(c);
+        TextField colorField = new TextField ();
+        colorField.setPromptText("Enter stuff...");
+        colorField.setPrefColumnCount(7);
 
 
-        HBox hbox = new HBox(button, label);
-        Label label1 = new Label("Name:");
-        TextField name = new TextField ();
-        name.setPromptText("Enter your first name.");
-        name.setPrefColumnCount(10);
-
-        hbox.getChildren().addAll(label1, name);
-        hbox.setSpacing(10);
-
-        button.setOnAction(value ->  {
-            label.setText("Clicked!");
-            color.setColor(name.getText());
+        setButton.setOnAction(value ->  {
+            String text = colorField.getText();
+            System.out.println("Setting Color to " + text + "...");
+            color.setColor(text);
+            rectangle.setFill(Color.web(color.getHex()));
+            hexVal.setText(h);
+            redVal.setText(r);
+            greenVal.setText(g);
+            blueVal.setText(b);
             color.printColors();
-            button.setStyle("-fx-background-color: "+ buttonColor +"; ");
-            button.applyCss();
+
+        });
+        addButton.setOnAction(value ->  {
+            String text = colorField.getText();
+            System.out.println("Adding " + text + " to Color...");
+            color.addColor(text);
+            rectangle.setFill(Color.web(color.getHex()));
+            hexVal.setText(h);
+            redVal.setText(r);
+            greenVal.setText(g);
+            blueVal.setText(b);
+            color.printColors();
 
         });
 
+        subtractButton.setOnAction(value ->  {
+            String text = colorField.getText();
+            System.out.println("Subtracting " + text + " from Color...");
+            color.subtractColor(text);
+            rectangle.setFill(Color.web(color.getHex()));
+            hexVal.setText(h);
+            redVal.setText(r);
+            greenVal.setText(g);
+            blueVal.setText(b);
 
-        Scene scene = new Scene(hbox, 200, 100);
+            color.printColors();
+
+        });
+
+        multiplyButton.setOnAction(value ->  {
+            String text = colorField.getText();
+            System.out.println("Multiplying Color by a factor of " + text + "...");
+            color.multiplyColor(text);
+            rectangle.setFill(Color.web(color.getHex()));
+            hexVal.setText(h);
+            redVal.setText(r);
+            greenVal.setText(g);
+            blueVal.setText(b);
+            color.printColors();
+
+        });
+
+        HBox hbox = new HBox(hexVal,addButton, subtractButton,multiplyButton,setButton,redVal,greenVal,blueVal,colorField,rectangle);
+
+        Scene scene = new Scene(hbox, 1920, 1080);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
